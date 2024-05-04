@@ -2,7 +2,13 @@ import React from "react";
 import { Card, Image, Stack } from "react-bootstrap";
 import { Post } from "../types/Post";
 
-function PostDetail({ post }: { post: Post }) {
+function PostDetail({
+  post,
+  setModalVisible,
+}: {
+  post: Post;
+  setModalVisible: (visible: boolean) => void;
+}) {
   return (
     <Stack>
       <h1>{post.title}</h1>
@@ -10,7 +16,7 @@ function PostDetail({ post }: { post: Post }) {
         <Card.Img
           as={Image}
           onClick={() => {
-            console.log("Image clicked");
+            setModalVisible(true);
           }}
           src={post.image}
           style={{ width: "auto", height: "40vh", objectFit: "cover" }}

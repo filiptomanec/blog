@@ -34,7 +34,7 @@ function PostList() {
             <Card.Title>
               <h5>{post.title}</h5>
             </Card.Title>
-            <Card.Text>
+            <Card.Text as="div">
               <LinesEllipsis
                 text={post.content.paragraphs.join(" ")}
                 maxLine="3"
