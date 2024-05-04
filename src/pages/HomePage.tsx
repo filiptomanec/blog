@@ -7,7 +7,7 @@ function HomePage() {
         <Link to="/" className="text-decoration-none text-black">
           <h1>Travel Blog</h1>
         </Link>
-        <p>This is my travel blog</p>
+        <p>This is an example of a travel blog app</p>
       </div>
       <Outlet />
     </div>
