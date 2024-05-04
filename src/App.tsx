@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import PostList from "./components/PostList";
 import PostPage from "./pages/PostPage";
 import { CommentProvider } from "./contexts/CommentProvider";
+import NoPage from "./pages/NoPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<PostList />} />
               <Route path="/post/:id" element={<PostPage />} />
             </Route>
+            <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
       </CommentProvider>
