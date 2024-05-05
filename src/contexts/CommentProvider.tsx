@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { CommentlContext } from "./CommentlContext";
+import { CommentContext, ModalProps } from "./CommentContext";
 import { Comment } from "../types/Comment";
 import { comments as initComments } from "../data/comments";
 
@@ -10,7 +10,10 @@ interface CommentModalProviderProps {
 export const CommentProvider: React.FC<CommentModalProviderProps> = ({
   children,
 }) => {
-  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+  const [modalProps, setModalProps] = useState<ModalProps>({
+    isCommentModalOpen: false,
+    type: "comment",
+  });
   const [comments, setComments] = useState<Comment[]>([]);
 
   // Load comments from local storage if they exist or initialize with default comments
@@ -26,20 +29,25 @@ export const CommentProvider: React.FC<CommentModalProviderProps> = ({
     }
   }, [comments]);
 
-  const openCommentModal = () => setIsCommentModalOpen(true);
-  const closeCommentModal = () => setIsCommentModalOpen(false);
+  const openCommentModal = () =>
+    setModalProps({ isCommentModalOpen: true, type: "comment" });
+  const openAnswerModal = (id: number) =>
+    setModalProps({ isCommentModalOpen: true, type: "answer", commentId: id });
+  const closeModal = () =>
+    setModalProps({ isCommentModalOpen: false, type: "comment" });
 
   return (
-    <CommentlContext.Provider
+    <CommentContext.Provider
       value={{
-        isCommentModalOpen,
+        modalProps,
         openCommentModal,
-        closeCommentModal,
+        openAnswerModal,
+        closeModal,
         comments,
         setComments,
       }}
     >
       {children}
-    </CommentlContext.Provider>
+    </CommentContext.Provider>
   );
 };

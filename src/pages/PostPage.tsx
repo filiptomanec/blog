@@ -4,7 +4,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { posts } from "../data/posts";
 import ImageModal from "../components/ImageModal";
-import NewCommentModal from "../components/NewCommentModal";
+import CommentModal from "../components/CommentModal";
 
 function PostPage() {
   const { id } = useParams();
@@ -23,7 +23,7 @@ function PostPage() {
         onHide={() => setModalVisible(false)}
         imageSrc={post.image}
       />
-      <NewCommentModal postId={post.id} />
+      <CommentModal postId={post.id} />
     </>
   );
 }

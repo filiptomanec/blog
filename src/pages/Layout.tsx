@@ -3,7 +3,9 @@ import packageJson from "../../package.json";
 
 export default function Layout() {
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <header>
         <div className="text-center w-auto mt-4">
           <Link to="/" className="text-decoration-none text-black">
@@ -15,8 +17,8 @@ export default function Layout() {
       <div style={{ paddingInline: 30 }}>
         <Outlet />
       </div>
-      <footer>
-        <div className="border-top w-100 mt-5">
+      <footer style={{ marginTop: "auto" }}>
+        <div className="border-top w-100 mt-5 p-2">
           <div style={{ width: "50px", marginLeft: "auto" }}>
             V {packageJson.version}
           </div>
