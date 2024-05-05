@@ -2,14 +2,10 @@ import React, { useContext, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { CommentContext } from "../contexts/CommentContext";
 import { capitalizeFirstLetter } from "../utils/utils";
+import { CommentContext } from "../contexts/CommentContext";
 
-type CommentType = {
-  postId: number;
-};
-
-export default function CommentModal({ postId }: CommentType) {
+export default function CommentModal({ postId }: { postId: number }) {
   const { modalProps, closeModal, comments, setComments } =
     useContext(CommentContext);
   const [newComment, setNewComment] = useState({

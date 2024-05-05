@@ -8,7 +8,7 @@ import CommentModal from "../components/CommentModal";
 
 function PostPage() {
   const { id } = useParams();
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [imageModalVisible, setImageModalVisible] = React.useState(false);
   const post = posts.find((post) => post.id === Number(id));
 
   if (!post) {
@@ -16,11 +16,11 @@ function PostPage() {
   }
   return (
     <>
-      <PostDetail post={post} setModalVisible={setModalVisible} />
+      <PostDetail post={post} setImageModalVisible={setImageModalVisible} />
       <CommentList postId={post.id} />
       <ImageModal
-        show={modalVisible}
-        onHide={() => setModalVisible(false)}
+        show={imageModalVisible}
+        onHide={() => setImageModalVisible(false)}
         imageSrc={post.image}
       />
       <CommentModal postId={post.id} />

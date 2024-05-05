@@ -4,10 +4,10 @@ import { Post } from "../types/Post";
 
 function PostDetail({
   post,
-  setModalVisible,
+  setImageModalVisible,
 }: {
   post: Post;
-  setModalVisible: (visible: boolean) => void;
+  setImageModalVisible: (visible: boolean) => void;
 }) {
   return (
     <Stack>
@@ -16,7 +16,7 @@ function PostDetail({
         <Card.Img
           as={Image}
           onClick={() => {
-            setModalVisible(true);
+            setImageModalVisible(true);
           }}
           src={post.image}
           style={{ width: "auto", height: "40vh", objectFit: "cover" }}
