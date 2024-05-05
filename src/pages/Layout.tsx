@@ -14,7 +14,7 @@ export default function Layout() {
           <p>This is an example of a travel blog app</p>
         </div>
       </header>
-      <div style={{ paddingInline: 30 }}>
+      <div className="px-3 px-lg-5">
         <Outlet />
       </div>
       <footer style={{ marginTop: "auto" }}>
