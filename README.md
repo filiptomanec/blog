@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# Travel Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple blog application developed using React, React Bootstrap, TypeScript, and Storybook.
 
-## Available Scripts
+![Screenshot of the application](./ReadmeImg.png?raw=true "Screen")
 
-In the project directory, you can run:
+## Project Overview
 
-### `npm start`
+The Travel Blog application consists of a homepage that displays a list of blog posts. Each post can be clicked on to
+view its details. The detail view includes the post content and a list of comments. Users have the option to add their
+own comments to each post. The application is serverless and preserves written comments upon refreshing the page (
+Ctrl+R).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Hosting and Deployment
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The application is hosted at [http://filiptomanec.php5.cz](http://filiptomanec.php5.cz).<br/>
+It is automatically updated after each push to the GitHub repository through GitHub Actions.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: A JavaScript library for building user interfaces. It allows us to create reusable UI components.
+- **TypeScript**: A statically typed superset of JavaScript that adds types to the language. TypeScript simplifies
+  JavaScript code, making it easier to read and debug.
+- **React Bootstrap**: Used for styling the application. It is a front-end framework that helps create responsive,
+  mobile-first projects on the web.
+- **Storybook**: A tool for developing UI components in isolation.
 
-### `npm run build`
+## Version
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The current version of this project is 0.1.3.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To install this project, follow these steps:
 
-### `npm run eject`
+1. Clone this repository to your local machine.
+2. Install the dependencies using the command `npm install`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Running the Application
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run this project, use the command `npm start`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Building the Application
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To build this project, use the command `npm run build`.
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Filip Tomanec - tomanec.f@gmail.com
