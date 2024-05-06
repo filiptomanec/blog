@@ -8,14 +8,23 @@ import { CommentContext } from "../contexts/CommentContext";
 export default function CommentModal({ postId }: { postId: number }) {
   const { modalProps, closeModal, comments, setComments } =
     useContext(CommentContext);
+  const [validated, setValidated] = useState(false);
   const [newComment, setNewComment] = useState({
     postId,
     author: "",
     text: "",
   });
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget as HTMLFormElement;
+
+    // Check if form is valid
+    if (!form.checkValidity()) {
+      setValidated(true);
+      return;
+    }
+
     if (modalProps.type === "comment") {
       // set comment
       setComments((comments) => [
@@ -29,18 +38,23 @@ export default function CommentModal({ postId }: { postId: number }) {
       );
       if (currentComment) {
         const newAnswer = { author: newComment.author, text: newComment.text };
-        setComments((comments) => [
-          ...comments.filter((comment) => comment.id !== modalProps.commentId),
-          {
-            ...currentComment,
-            answers: currentComment.answers
-              ? [...currentComment.answers, newAnswer]
-              : [newAnswer],
-          },
-        ]);
+        setComments((comments) =>
+          comments.map((comment) => {
+            if (comment.id === modalProps.commentId) {
+              return {
+                ...comment,
+                answers: comment.answers
+                  ? [...comment.answers, newAnswer]
+                  : [newAnswer],
+              };
+            }
+            return comment;
+          }),
+        );
       }
     }
     setNewComment({ postId, author: "", text: "" });
+    setValidated(false);
     closeModal();
   };
 
@@ -52,11 +66,12 @@ export default function CommentModal({ postId }: { postId: number }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Group controlId="author">
             <Form.Label>Author</Form.Label>
             <Form.Control
               type="text"
+              required
               value={newComment.author}
               onChange={(e) =>
                 setNewComment({ ...newComment, author: e.target.value })
@@ -69,6 +84,7 @@ export default function CommentModal({ postId }: { postId: number }) {
             <Form.Label>Comment</Form.Label>
             <Form.Control
               as="textarea"
+              required
               value={newComment.text}
               onChange={(e) =>
                 setNewComment({ ...newComment, text: e.target.value })
@@ -76,16 +92,16 @@ export default function CommentModal({ postId }: { postId: number }) {
               placeholder={`Enter your ${modalProps.type}`}
             />
           </Form.Group>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closeModal}>
+              Close
+            </Button>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Modal.Footer>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={closeModal}>
-          Close
-        </Button>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
